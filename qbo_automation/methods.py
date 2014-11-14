@@ -13,18 +13,6 @@ from selenium.webdriver.common.by import By
     # a = self.driver.execute_script("var win = this.browserbot.getUserWindow(); return win.promptResponse")
     # return a
 
-
-def log_in(self, qbo_company_number):
-    self.driver = webdriver.Firefox()
-    self.base_url = "https://qbo.intuit.com/"
-    self.verificationErrors = []
-    self.accept_next_alert = True
-    self.driver.get(self.base_url + "/app/homepage")
-    self.driver.find_element_by_id("login").send_keys("qbo.company" + str(qbo_company_number) + "@gmail.com")
-    self.driver.find_element_by_id("password").send_keys("revelup1")
-    self.driver.find_element_by_id("LoginButton").click()
-
-
 def clear(self, loc_type, loc):
     driver = self.driver
     if loc_type == "id":
@@ -65,6 +53,7 @@ def create_location(self, loc_num):
     driver = self.driver
     time.sleep(5)
     driver.refresh()
+    element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "(//button[@class='global-header-item-button']/span[@class='label'])[4]")))
     driver.find_element_by_xpath("(//button[@class='global-header-item-button']/span[@class='label'])[4]").click()
     time.sleep(2)
     driver.find_element_by_link_text("All Lists").click()
