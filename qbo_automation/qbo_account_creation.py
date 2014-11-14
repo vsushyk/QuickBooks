@@ -1,5 +1,7 @@
 __author__ = 'volodymyr'
 
+import sys
+sys.path.append('..')
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -59,7 +61,7 @@ class QBOCompany():
         element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@data-qbo-bind='value: industryName']")))
         driver.find_element_by_xpath("//input[@data-qbo-bind='value: industryName']").clear()
         driver.find_element_by_xpath("//input[@data-qbo-bind='value: industryName']").send_keys(
-            "Restaurant, Caterer, or Bar")
+            "Retail Trade")
         driver.find_element_by_xpath("//input[@data-qbo-bind='value: industryName']").send_keys(Keys.RETURN)
         driver.find_element_by_xpath("//form[@id='dijit_form_Form_1']/div[3]/div[1]/div[1]").click()
         driver.find_element_by_xpath('//td[text()="Products and services"]').click()
@@ -77,4 +79,4 @@ class QBOCompany():
 
 
 if __name__ == "__main__":
-    QBOCompany(38)
+    QBOCompany(40)

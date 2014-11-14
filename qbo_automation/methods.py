@@ -99,7 +99,7 @@ def create_account(self, acc_cat, acc_name):
 
 def create_item(self, item_name, income_account):
     driver = self.driver
-    driver.find_element_by_css_selector("button.button.primary").click()
+    driver.find_element_by_xpath("//button[text()='New]").click()
     driver.find_element_by_xpath("//div[@class='tableCell nameCell']/div/input[@name='name']").click()
     driver.find_element_by_xpath("//div[@class='tableCell nameCell']/div/input[@name='name']").send_keys(item_name)
     driver.find_element_by_xpath("//div[@class='tableCell nameCell']/div/input[@name='name']").click()

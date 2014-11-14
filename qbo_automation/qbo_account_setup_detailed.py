@@ -1,5 +1,7 @@
 __author__ = 'volodymyr'
 
+import sys
+sys.path.append('..')
 from qbo_automation.methods import clear, send_keys, click, create_payment, create_location, create_account, create_item
 import time
 from selenium.webdriver.common.by import By
@@ -12,9 +14,9 @@ from selenium.webdriver.common.keys import Keys
 class QBO_Company_detailed_setup():
     def __init__(self, company_id):
         QBO_Company_detailed_setup.log_in(self, company_id)
-        QBO_Company_detailed_setup.create_location(self, company_id)
-        QBO_Company_detailed_setup.create_payments(self)
-        QBO_Company_detailed_setup.create_accounts(self)
+        # QBO_Company_detailed_setup.create_location(self, company_id)
+        # QBO_Company_detailed_setup.create_payments(self)
+        # QBO_Company_detailed_setup.create_accounts(self)
         QBO_Company_detailed_setup.create_items(self)
         # QBO_Company_detailed_setup.create_sales_tax(self) # selenium cannot find button by xpath locator. Need to be fixed before uncommenting
         QBO_Company_detailed_setup.set_settings(self)
@@ -38,7 +40,7 @@ class QBO_Company_detailed_setup():
         driver.find_element_by_xpath("(//button[@class='global-header-item-button']/span[@class='label'])[4]").click()
         driver.find_element_by_link_text("All Lists").click()
         driver.find_element_by_link_text("Payment Methods").click()
-        list_of_payments = ["Visa", "MC", "Amex", "Discover", "Debit Card", "Gift Card", "Other", "Payout"]
+        list_of_payments = ["Visa", "MC", "Amex", "Discover", "Debit Card", "Gift Card", "Other", "PayPal"]
         for payment in list_of_payments:
             if list_of_payments.index(payment) <= 3:
                 create_payment(self, "credit", payment)
@@ -118,4 +120,4 @@ class QBO_Company_detailed_setup():
 
 
 if __name__ == "__main__":
-    QBO_Company_detailed_setup(38)
+    QBO_Company_detailed_setup(40)
