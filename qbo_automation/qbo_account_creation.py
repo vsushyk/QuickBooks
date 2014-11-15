@@ -79,4 +79,4 @@ class QBOCompany():
 
 
 if __name__ == "__main__":
-    QBOCompany(40)
+    QBOCompany()

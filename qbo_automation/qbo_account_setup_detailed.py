@@ -14,9 +14,9 @@ from selenium.webdriver.common.keys import Keys
 class QBO_Company_detailed_setup():
     def __init__(self, company_id):
         QBO_Company_detailed_setup.log_in(self, company_id)
-        # QBO_Company_detailed_setup.create_location(self, company_id)
-        # QBO_Company_detailed_setup.create_payments(self)
-        # QBO_Company_detailed_setup.create_accounts(self)
+        QBO_Company_detailed_setup.create_location(self, company_id)
+        QBO_Company_detailed_setup.create_payments(self)
+        QBO_Company_detailed_setup.create_accounts(self)
         QBO_Company_detailed_setup.create_items(self)
         # QBO_Company_detailed_setup.create_sales_tax(self) # selenium cannot find button by xpath locator. Need to be fixed before uncommenting
         QBO_Company_detailed_setup.set_settings(self)
@@ -120,4 +120,4 @@ class QBO_Company_detailed_setup():
 
 
 if __name__ == "__main__":
-    QBO_Company_detailed_setup(40)
+    QBO_Company_detailed_setup()
